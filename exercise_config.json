@@ -1,0 +1,257 @@
+{
+    "exercise_name": "Surya Namaskar",
+  
+    "joint_definitions": {
+      "left_knee": {
+        "description": "Angle of the left knee",
+        "landmarks": { "A": "LEFT_HIP", "B": "LEFT_KNEE", "C": "LEFT_ANKLE" }
+      },
+      "right_knee": {
+        "description": "Angle of the right knee",
+        "landmarks": { "A": "RIGHT_HIP", "B": "RIGHT_KNEE", "C": "RIGHT_ANKLE" }
+      },
+      "left_hip_flexion": {
+        "description": "Flexion/extension of the left hip",
+        "landmarks": { "A": "LEFT_SHOULDER", "B": "LEFT_HIP", "C": "LEFT_KNEE" }
+      },
+      "right_hip_flexion": {
+        "description": "Flexion/extension of the right hip",
+        "landmarks": { "A": "RIGHT_SHOULDER", "B": "RIGHT_HIP", "C": "RIGHT_KNEE" }
+      },
+      "left_shoulder_adduction": {
+        "description": "Adduction/abduction of the left shoulder relative to torso",
+        "landmarks": { "A": "LEFT_ELBOW", "B": "LEFT_SHOULDER", "C": "LEFT_HIP" }
+      },
+      "right_shoulder_adduction": {
+        "description": "Adduction/abduction of the right shoulder relative to torso",
+        "landmarks": { "A": "RIGHT_ELBOW", "B": "RIGHT_SHOULDER", "C": "RIGHT_HIP" }
+      },
+      "left_elbow": {
+        "description": "Angle of the left elbow",
+        "landmarks": { "A": "LEFT_SHOULDER", "B": "LEFT_ELBOW", "C": "LEFT_WRIST" }
+      },
+      "right_elbow": {
+        "description": "Angle of the right elbow",
+        "landmarks": { "A": "RIGHT_SHOULDER", "B": "RIGHT_ELBOW", "C": "RIGHT_WRIST" }
+      },
+      "torso_angle_left": {
+        "description": "Approximate angle representing back straightness/bend (using left side: L_SHOULDER, L_HIP, L_KNEE)",
+        "landmarks": { "A": "LEFT_SHOULDER", "B": "LEFT_HIP", "C": "LEFT_KNEE" }
+      },
+      "neck_angle": {
+        "description": "Angle of the neck relative to the torso",
+        "landmarks": { "A": "LEFT_SHOULDER", "B": "NOSE", "C": "RIGHT_SHOULDER" }
+      }
+    },
+  
+    "sequence": [
+      "pranamasana_start",
+      "hasta_uttanasana_main",
+      "padahastasana_fold",
+      "ashwa_sanchalanasana_R_leg_back",
+      "dandasana_plank",
+      "ashtanga_namaskara_eight_limbs",
+      "bhujangasana_cobra",
+      "adho_mukha_svanasana_down_dog",
+      "ashwa_sanchalanasana_L_leg_back",
+      "padahastasana_return_fold",
+      "hasta_uttanasana_return_up",
+      "pranamasana_end"
+    ],
+  
+    "poses": {
+      "pranamasana_start": {
+        "display_name": "Pranamasana (Prayer Pose)",
+        "description": "Stand tall, feet together, palms joined at chest level (Prayer Pose).",
+        "image_path": "images/pranamasana.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Straighten left leg", "above_max": "Avoid hyperextension" } },
+          "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Straighten right leg", "above_max": "Avoid hyperextension" } },
+          "left_hip_flexion": { "angle_range": [165, 180], "feedback": { "below_min": "Stand taller", "above_max": "Avoid leaning back" } },
+          "right_hip_flexion":{ "angle_range": [165, 180], "feedback": { "below_min": "Stand taller", "above_max": "Avoid leaning back" } },
+          "left_shoulder_adduction": { "angle_range": [20, 40], "feedback": { "below_min": "Relax left shoulder", "above_max": "Keep left arm down" } },
+          "right_shoulder_adduction":{ "angle_range": [20, 40], "feedback": { "below_min": "Relax right shoulder", "above_max": "Keep right arm down" } },
+          "left_elbow":   { "angle_range": [30, 60], "feedback": { "below_min": "Bend left elbow more", "above_max": "Relax left elbow bend" } },
+          "right_elbow":  { "angle_range": [30, 60], "feedback": { "below_min": "Bend right elbow more", "above_max": "Relax right elbow bend" } },
+          "torso_angle_left":{ "angle_range": [170, 180], "feedback": { "below_min": "Stand up straighter", "above_max": "Avoid leaning back" } }
+        }
+      },
+      "hasta_uttanasana_main": {
+        "display_name": "Hasta Uttanasana (Raised Arms Pose)",
+        "description": "Inhale, raise arms overhead and arch back slightly (Raised Arms Pose).",
+        "image_path": "images/hasta_uttanasana.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Keep left leg straight", "above_max": "Avoid hyperextension" } },
+          "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Keep right leg straight", "above_max": "Avoid hyperextension" } },
+          "left_hip_flexion": { "angle_range": [150, 180], "feedback": { "below_min": "Engage core, lift chest", "above_max": "Reduce backbend slightly" } },
+          "right_hip_flexion":{ "angle_range": [150, 180], "feedback": { "below_min": "Engage core, lift chest", "above_max": "Reduce backbend slightly" } },
+          "left_shoulder_adduction": { "angle_range": [150, 180], "feedback": { "below_min": "Reach left arm higher", "above_max": "Keep left arm straight" } },
+          "right_shoulder_adduction":{ "angle_range": [150, 180], "feedback": { "below_min": "Reach right arm higher", "above_max": "Keep right arm straight" } },
+          "left_elbow":   { "angle_range": [120, 180], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
+          "right_elbow":  { "angle_range": [120, 180], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
+          "torso_angle_left":{ "angle_range": [160, 180], "feedback": { "below_min": "Lift chest, arch gently", "above_max": "Ease the backbend" } }
+        }
+      },
+      "padahastasana_fold": {
+        "display_name": "Padahastasana (Hand to Foot Pose)",
+        "description": "Exhale, fold forward from the hips, hands towards feet (Hand to Foot Pose).",
+        "image_path": "images/padahastasana.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Try straightening left leg more (or bend slightly if needed)", "above_max": "Avoid locking knee" } },
+          "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Try straightening right leg more (or bend slightly if needed)", "above_max": "Avoid locking knee" } },
+          "left_hip_flexion": { "angle_range": [25, 70], "feedback": { "below_min": "Fold deeper from left hip", "above_max": "Slightly lift torso" } },
+          "right_hip_flexion":{ "angle_range": [25, 70], "feedback": { "below_min": "Fold deeper from right hip", "above_max": "Slightly lift torso" } },
+          "left_shoulder_adduction": { "angle_range": [100, 140], "feedback": { "below_min": "Relax left shoulder down", "above_max": "Keep left arm straight" } },
+          "right_shoulder_adduction":{ "angle_range": [100, 140], "feedback": { "below_min": "Relax right shoulder down", "above_max": "Keep right arm straight" } },
+          "left_elbow":   { "angle_range": [150, 180], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
+          "right_elbow":  { "angle_range": [150, 180], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
+          "torso_angle_left":{ "angle_range": [25, 60], "feedback": { "below_min": "Lengthen spine, fold more", "above_max": "Slightly lift chest" } }
+        }
+      },
+      "ashwa_sanchalanasana_R_leg_back": {
+        "display_name": "Ashwa Sanchalanasana (Equestrian - Right Leg Back)",
+        "description": "Inhale, step right leg back, left knee bent over ankle, look up (Equestrian Pose).",
+        "image_path": "images/ashwa_sanchalanasana_r_back.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [80, 105], "feedback": { "below_min": "Bend left knee less", "above_max": "Bend left knee more (align over ankle)" } },
+          "right_knee":   { "angle_range": [150, 180], "feedback": { "below_min": "Straighten right knee more", "above_max": "Keep right leg long" } },
+          "left_hip_flexion": { "angle_range": [20, 50], "feedback": { "below_min": "Sink left hip lower", "above_max": "Lift left hip slightly" } },
+          "right_hip_flexion":{ "angle_range": [150, 180], "feedback": { "below_min": "Extend right hip further back", "above_max": "Avoid sagging right hip" } },
+          "left_shoulder_adduction": { "angle_range": [30, 60], "feedback": { "below_min": "Draw left shoulder back", "above_max": "Relax left shoulder down" } },
+          "right_shoulder_adduction":{ "angle_range": [30, 60], "feedback": { "below_min": "Draw right shoulder back", "above_max": "Relax right shoulder down" } },
+          "left_elbow":   { "angle_range": [165, 180], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
+          "right_elbow":  { "angle_range": [165, 180], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
+          "torso_angle_left":{ "angle_range": [20, 50], "feedback": { "below_min": "Lift chest, lengthen spine", "above_max": "Avoid rounding back" } }
+        }
+      },
+      "dandasana_plank": {
+        "display_name": "Dandasana (Plank Pose)",
+        "description": "Hold breath, step left leg back into plank pose, body in a straight line.",
+        "image_path": "images/dandasana_plank.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Straighten left leg", "above_max": "Avoid locking knee" } },
+          "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Straighten right leg", "above_max": "Avoid locking knee" } },
+          "left_hip_flexion": { "angle_range": [170, 180], "feedback": { "below_min": "Lower left hip", "above_max": "Lift left hip slightly" } },
+          "right_hip_flexion":{ "angle_range": [170, 180], "feedback": { "below_min": "Lower right hip", "above_max": "Lift right hip slightly" } },
+          "left_shoulder_adduction": { "angle_range": [55, 95], "feedback": { "below_min": "Shift weight forward", "above_max": "Shift weight slightly back" } },
+          "right_shoulder_adduction":{ "angle_range": [55, 95], "feedback": { "below_min": "Shift weight forward", "above_max": "Shift weight slightly back" } },
+          "left_elbow":   { "angle_range": [150, 180], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
+          "right_elbow":  { "angle_range": [150, 180], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
+          "torso_angle_left":{ "angle_range": [170, 180], "feedback": { "below_min": "Engage core, avoid sagging", "above_max": "Lower hips" } }
+        }
+      },
+      "ashtanga_namaskara_eight_limbs": {
+        "display_name": "Ashtanga Namaskara (Eight Limbed Pose)",
+        "description": "Exhale, lower knees, chest, and chin to the floor (Eight Limbed Pose).",
+        "image_path": "images/ashtanga_namaskara.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [140, 180], "feedback": { "below_min": "Lower left knee more", "above_max": "Bend left knee more" } },
+          "right_knee":   { "angle_range": [140, 180], "feedback": { "below_min": "Lower right knee more", "above_max": "Bend right knee more" } },
+          "left_hip_flexion": { "angle_range": [140, 180], "feedback": { "below_min": "Keep hips higher", "above_max": "Lower hips slightly towards floor" } },
+          "right_hip_flexion":{ "angle_range": [140, 180], "feedback": { "below_min": "Keep hips higher", "above_max": "Lower hips slightly towards floor" } },
+          "left_shoulder_adduction": { "angle_range": [10, 50], "feedback": { "below_min": "Keep left shoulder stable", "above_max": "Relax left shoulder slightly" } },
+          "right_shoulder_adduction":{ "angle_range": [10, 50], "feedback": { "below_min": "Keep right shoulder stable", "above_max": "Relax right shoulder slightly" } },
+          "left_elbow":   { "angle_range": [30, 70], "feedback": { "below_min": "Bend left elbow more", "above_max": "Straighten left elbow slightly" } },
+          "right_elbow":  { "angle_range": [30, 70], "feedback": { "below_min": "Bend right elbow more", "above_max": "Straighten right elbow slightly" } },
+          "torso_angle_left":{ "angle_range": [140, 180], "feedback": { "below_min": "Lift hips higher", "above_max": "Lower hips gently" } }
+        }
+      },
+      "bhujangasana_cobra": {
+        "display_name": "Bhujangasana (Cobra Pose)",
+        "description": "Inhale, slide forward, lift chest into Cobra Pose, keep hips down.",
+        "image_path": "images/bhujangasana_cobra.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [150, 180], "feedback": { "below_min": "Straighten left leg", "above_max": "Relax left leg" } },
+          "right_knee":   { "angle_range": [150, 180], "feedback": { "below_min": "Straighten right leg", "above_max": "Relax right leg" } },
+          "left_hip_flexion": { "angle_range": [115, 150], "feedback": { "below_min": "Lower left hip", "above_max": "Keep hips grounded" } },
+          "right_hip_flexion":{ "angle_range": [115, 150], "feedback": { "below_min": "Lower right hip", "above_max": "Keep hips grounded" } },
+          "left_shoulder_adduction": { "angle_range": [15, 50], "feedback": { "below_min": "Draw left shoulder down", "above_max": "Relax left shoulder tension" } },
+          "right_shoulder_adduction":{ "angle_range": [15, 50], "feedback": { "below_min": "Draw right shoulder down", "above_max": "Relax right shoulder tension" } },
+          "left_elbow":   { "angle_range": [155, 180], "feedback": { "below_min": "Bend left elbow more", "above_max": "Straighten left elbow slightly" } },
+          "right_elbow":  { "angle_range": [155, 180], "feedback": { "below_min": "Bend right elbow more", "above_max": "Straighten right elbow slightly" } },
+          "torso_angle_left":{ "angle_range": [120, 160], "feedback": { "below_min": "Lift chest higher", "above_max": "Ease the backbend slightly" } },
+          "neck_angle":   { "angle_range": [0, 30], "feedback": { "below_min": "Relax neck", "above_max": "Avoid straining neck" } }
+        }
+      },
+      "adho_mukha_svanasana_down_dog": {
+        "display_name": "Adho Mukha Svanasana (Downward Facing Dog)",
+        "description": "Exhale, lift hips and tailbone, form an inverted V (Downward Facing Dog).",
+        "image_path": "images/adho_mukha_svanasana.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [160, 180], "feedback": { "below_min": "Straighten left leg (or slight bend OK)", "above_max": "Avoid locking knee" } },
+          "right_knee":   { "angle_range": [160, 180], "feedback": { "below_min": "Straighten right leg (or slight bend OK)", "above_max": "Avoid locking knee" } },
+          "left_hip_flexion": { "angle_range": [65, 95], "feedback": { "below_min": "Push hips back and up", "above_max": "Bring shoulders slightly forward" } },
+          "right_hip_flexion":{ "angle_range": [65, 95], "feedback": { "below_min": "Push hips back and up", "above_max": "Bring shoulders slightly forward" } },
+          "left_shoulder_adduction": { "angle_range": [140, 180], "feedback": { "below_min": "Push through left hand", "above_max": "Relax left shoulder slightly" } },
+          "right_shoulder_adduction":{ "angle_range": [140, 180], "feedback": { "below_min": "Push through right hand", "above_max": "Relax right shoulder slightly" } },
+          "left_elbow":   { "angle_range": [165, 180], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
+          "right_elbow":  { "angle_range": [165, 180], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
+          "torso_angle_left":{ "angle_range": [70, 95], "feedback": { "below_min": "Lengthen spine, push hips back", "above_max": "Avoid rounding upper back" } }
+        }
+      },
+      "ashwa_sanchalanasana_L_leg_back": {
+        "display_name": "Ashwa Sanchalanasana (Equestrian - Left Leg Back)",
+        "description": "Inhale, step right foot forward between hands, left knee down (or extended), look up.",
+        "image_path": "images/ashwa_sanchalanasana_l_back.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [150, 185], "feedback": { "below_min": "Straighten left knee more", "above_max": "Keep left leg long" } },
+          "right_knee":   { "angle_range": [80, 105], "feedback": { "below_min": "Bend right knee less", "above_max": "Bend right knee more (align over ankle)" } },
+          "left_hip_flexion": { "angle_range": [150, 180], "feedback": { "below_min": "Extend left hip further back", "above_max": "Avoid sagging left hip" } },
+          "right_hip_flexion":{ "angle_range": [20, 50], "feedback": { "below_min": "Sink right hip lower", "above_max": "Lift right hip slightly" } },
+          "left_shoulder_adduction": { "angle_range": [30, 60], "feedback": { "below_min": "Draw left shoulder back", "above_max": "Relax left shoulder down" } },
+          "right_shoulder_adduction":{ "angle_range": [30, 60], "feedback": { "below_min": "Draw right shoulder back", "above_max": "Relax right shoulder down" } },
+          "left_elbow":   { "angle_range": [165, 180], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
+          "right_elbow":  { "angle_range": [165, 180], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
+          "torso_angle_left":{ "angle_range": [20, 50], "feedback": { "below_min": "Lift chest, lengthen spine", "above_max": "Avoid rounding back" } }
+        }
+      },
+      "padahastasana_return_fold": {
+        "display_name": "Padahastasana (Return Fold)",
+        "description": "Exhale, step left foot forward, fold forward from hips (Hand to Foot Pose).",
+        "image_path": "images/padahastasana.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [160, 180], "feedback": { "below_min": "Try straightening left leg more (or bend slightly if needed)", "above_max": "Avoid locking knee" } },
+          "right_knee":   { "angle_range": [160, 180], "feedback": { "below_min": "Try straightening right leg more (or bend slightly if needed)", "above_max": "Avoid locking knee" } },
+          "left_hip_flexion": { "angle_range": [25, 70], "feedback": { "below_min": "Fold deeper from left hip", "above_max": "Slightly lift torso" } },
+          "right_hip_flexion":{ "angle_range": [25, 70], "feedback": { "below_min": "Fold deeper from right hip", "above_max": "Slightly lift torso" } },
+          "left_shoulder_adduction": { "angle_range": [100, 140], "feedback": { "below_min": "Relax left shoulder down", "above_max": "Keep left arm straight" } }, 
+          "right_shoulder_adduction":{ "angle_range": [100, 140], "feedback": { "below_min": "Relax right shoulder down", "above_max": "Keep right arm straight" } },
+          "left_elbow":   { "angle_range": [150, 180], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
+          "right_elbow":  { "angle_range": [150, 180], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
+          "torso_angle_left":{ "angle_range": [25, 60], "feedback": { "below_min": "Lengthen spine, fold more", "above_max": "Slightly lift chest" } }
+        }
+      },
+      "hasta_uttanasana_return_up": {
+        "display_name": "Hasta Uttanasana (Return Up)",
+        "description": "Inhale, raise arms overhead, arch back slightly (Raised Arms Pose).",
+        "image_path": "images/hasta_uttanasana.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Keep left leg straight", "above_max": "Avoid hyperextension" } },
+          "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Keep right leg straight", "above_max": "Avoid hyperextension" } },
+          "left_hip_flexion": { "angle_range": [165, 180], "feedback": { "below_min": "Engage core, lift chest", "above_max": "Reduce backbend slightly" } },
+          "right_hip_flexion":{ "angle_range": [165, 180], "feedback": { "below_min": "Engage core, lift chest", "above_max": "Reduce backbend slightly" } },
+          "left_shoulder_adduction": { "angle_range": [25, 40], "feedback": { "below_min": "Reach left arm higher", "above_max": "Keep left arm straight" } },
+          "right_shoulder_adduction":{ "angle_range": [25, 40], "feedback": { "below_min": "Reach right arm higher", "above_max": "Keep right arm straight" } },
+          "left_elbow":   { "angle_range": [30, 60], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
+          "right_elbow":  { "angle_range": [30, 60], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
+          "torso_angle_left":{ "angle_range": [170, 180], "feedback": { "below_min": "Lift chest, arch gently", "above_max": "Ease the backbend" } }
+        }
+      },
+      "pranamasana_end": {
+        "display_name": "Pranamasana (Prayer Pose - End)",
+        "description": "Exhale, return to standing, palms joined at chest (Prayer Pose).",
+        "image_path": "images/pranamasana.png",
+        "criteria": {
+          "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Straighten left leg", "above_max": "Avoid hyperextension" } },
+          "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Straighten right leg", "above_max": "Avoid hyperextension" } },
+          "left_hip_flexion": { "angle_range": [165, 180], "feedback": { "below_min": "Stand taller", "above_max": "Avoid leaning back" } },
+          "right_hip_flexion":{ "angle_range": [165, 180], "feedback": { "below_min": "Stand taller", "above_max": "Avoid leaning back" } },
+          "left_shoulder_adduction": { "angle_range": [20, 40], "feedback": { "below_min": "Relax left shoulder", "above_max": "Keep left arm down" } },
+          "right_shoulder_adduction":{ "angle_range": [20, 40], "feedback": { "below_min": "Relax right shoulder", "above_max": "Keep right arm down" } },
+          "left_elbow":   { "angle_range": [30, 60], "feedback": { "below_min": "Bend left elbow more", "above_max": "Relax left elbow bend" } },
+          "right_elbow":  { "angle_range": [30, 60], "feedback": { "below_min": "Bend right elbow more", "above_max": "Relax right elbow bend" } },
+          "torso_angle_left":{ "angle_range": [170, 180], "feedback": { "below_min": "Stand up straighter", "above_max": "Avoid leaning back" } }
+        }
+      }
+    }
+  }
