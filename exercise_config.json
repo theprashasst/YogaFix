@@ -45,8 +45,8 @@
     },
   
     "sequence": [
-      "pranamasana_start",
-      "hasta_uttanasana_main",
+      "pranamasana",
+      "hasta_uttanasana",
       "padahastasana_fold",
       "ashwa_sanchalanasana_R_leg_back",
       "dandasana_plank",
@@ -54,16 +54,16 @@
       "bhujangasana_cobra",
       "adho_mukha_svanasana_down_dog",
       "ashwa_sanchalanasana_L_leg_back",
-      "padahastasana_return_fold",
-      "hasta_uttanasana_return_up",
-      "pranamasana_end"
+      "padahastasana_fold_2",
+      "hasta_uttanasana_2",
+      "pranamasana_2"
     ],
   
     "poses": {
-      "pranamasana_start": {
+      "pranamasana": {
         "display_name": "Pranamasana (Prayer Pose)",
         "description": "Stand tall, feet together, palms joined at chest level (Prayer Pose).",
-        "image_path": "images/pranamasana.png",
+        "image_path": "images/pose_1.png",
         "criteria": {
           "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Straighten left leg", "above_max": "Avoid hyperextension" } },
           "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Straighten right leg", "above_max": "Avoid hyperextension" } },
@@ -76,10 +76,10 @@
           "torso_angle_left":{ "angle_range": [170, 180], "feedback": { "below_min": "Stand up straighter", "above_max": "Avoid leaning back" } }
         }
       },
-      "hasta_uttanasana_main": {
+      "hasta_uttanasana": {
         "display_name": "Hasta Uttanasana (Raised Arms Pose)",
         "description": "Inhale, raise arms overhead and arch back slightly (Raised Arms Pose).",
-        "image_path": "images/hasta_uttanasana.png",
+        "image_path": "images/pose_2.png",
         "criteria": {
           "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Keep left leg straight", "above_max": "Avoid hyperextension" } },
           "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Keep right leg straight", "above_max": "Avoid hyperextension" } },
@@ -95,7 +95,7 @@
       "padahastasana_fold": {
         "display_name": "Padahastasana (Hand to Foot Pose)",
         "description": "Exhale, fold forward from the hips, hands towards feet (Hand to Foot Pose).",
-        "image_path": "images/padahastasana.png",
+        "image_path": "images/pose_3.png",
         "criteria": {
           "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Try straightening left leg more (or bend slightly if needed)", "above_max": "Avoid locking knee" } },
           "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Try straightening right leg more (or bend slightly if needed)", "above_max": "Avoid locking knee" } },
@@ -111,7 +111,7 @@
       "ashwa_sanchalanasana_R_leg_back": {
         "display_name": "Ashwa Sanchalanasana (Equestrian - Right Leg Back)",
         "description": "Inhale, step right leg back, left knee bent over ankle, look up (Equestrian Pose).",
-        "image_path": "images/ashwa_sanchalanasana_r_back.png",
+        "image_path": "images/pose_4.png",
         "criteria": {
           "left_knee":    { "angle_range": [80, 105], "feedback": { "below_min": "Bend left knee less", "above_max": "Bend left knee more (align over ankle)" } },
           "right_knee":   { "angle_range": [150, 180], "feedback": { "below_min": "Straighten right knee more", "above_max": "Keep right leg long" } },
@@ -127,7 +127,7 @@
       "dandasana_plank": {
         "display_name": "Dandasana (Plank Pose)",
         "description": "Hold breath, step left leg back into plank pose, body in a straight line.",
-        "image_path": "images/dandasana_plank.png",
+        "image_path": "images/pose_5.png",
         "criteria": {
           "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Straighten left leg", "above_max": "Avoid locking knee" } },
           "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Straighten right leg", "above_max": "Avoid locking knee" } },
@@ -143,7 +143,7 @@
       "ashtanga_namaskara_eight_limbs": {
         "display_name": "Ashtanga Namaskara (Eight Limbed Pose)",
         "description": "Exhale, lower knees, chest, and chin to the floor (Eight Limbed Pose).",
-        "image_path": "images/ashtanga_namaskara.png",
+        "image_path": "images/pose_6.png",
         "criteria": {
           "left_knee":    { "angle_range": [140, 180], "feedback": { "below_min": "Lower left knee more", "above_max": "Bend left knee more" } },
           "right_knee":   { "angle_range": [140, 180], "feedback": { "below_min": "Lower right knee more", "above_max": "Bend right knee more" } },
@@ -159,7 +159,7 @@
       "bhujangasana_cobra": {
         "display_name": "Bhujangasana (Cobra Pose)",
         "description": "Inhale, slide forward, lift chest into Cobra Pose, keep hips down.",
-        "image_path": "images/bhujangasana_cobra.png",
+        "image_path": "images/pose_7.png",
         "criteria": {
           "left_knee":    { "angle_range": [150, 180], "feedback": { "below_min": "Straighten left leg", "above_max": "Relax left leg" } },
           "right_knee":   { "angle_range": [150, 180], "feedback": { "below_min": "Straighten right leg", "above_max": "Relax right leg" } },
@@ -176,7 +176,7 @@
       "adho_mukha_svanasana_down_dog": {
         "display_name": "Adho Mukha Svanasana (Downward Facing Dog)",
         "description": "Exhale, lift hips and tailbone, form an inverted V (Downward Facing Dog).",
-        "image_path": "images/adho_mukha_svanasana.png",
+        "image_path": "images/pose_8.png",
         "criteria": {
           "left_knee":    { "angle_range": [160, 180], "feedback": { "below_min": "Straighten left leg (or slight bend OK)", "above_max": "Avoid locking knee" } },
           "right_knee":   { "angle_range": [160, 180], "feedback": { "below_min": "Straighten right leg (or slight bend OK)", "above_max": "Avoid locking knee" } },
@@ -192,7 +192,7 @@
       "ashwa_sanchalanasana_L_leg_back": {
         "display_name": "Ashwa Sanchalanasana (Equestrian - Left Leg Back)",
         "description": "Inhale, step right foot forward between hands, left knee down (or extended), look up.",
-        "image_path": "images/ashwa_sanchalanasana_l_back.png",
+        "image_path": "images/pose_9.png",
         "criteria": {
           "left_knee":    { "angle_range": [150, 185], "feedback": { "below_min": "Straighten left knee more", "above_max": "Keep left leg long" } },
           "right_knee":   { "angle_range": [80, 105], "feedback": { "below_min": "Bend right knee less", "above_max": "Bend right knee more (align over ankle)" } },
@@ -202,13 +202,13 @@
           "right_shoulder_adduction":{ "angle_range": [30, 60], "feedback": { "below_min": "Draw right shoulder back", "above_max": "Relax right shoulder down" } },
           "left_elbow":   { "angle_range": [165, 180], "feedback": { "below_min": "Straighten left elbow", "above_max": "Avoid locking elbow" } },
           "right_elbow":  { "angle_range": [165, 180], "feedback": { "below_min": "Straighten right elbow", "above_max": "Avoid locking elbow" } },
-          "torso_angle_left":{ "angle_range": [20, 50], "feedback": { "below_min": "Lift chest, lengthen spine", "above_max": "Avoid rounding back" } }
+          "torso_angle_left":{ "angle_range": [160, 180], "feedback": { "below_min": "Lift chest, lengthen spine", "above_max": "Avoid rounding back" } }
         }
       },
-      "padahastasana_return_fold": {
+      "padahastasana_fold_2": {
         "display_name": "Padahastasana (Return Fold)",
         "description": "Exhale, step left foot forward, fold forward from hips (Hand to Foot Pose).",
-        "image_path": "images/padahastasana.png",
+        "image_path": "images/pose_10.png",
         "criteria": {
           "left_knee":    { "angle_range": [160, 180], "feedback": { "below_min": "Try straightening left leg more (or bend slightly if needed)", "above_max": "Avoid locking knee" } },
           "right_knee":   { "angle_range": [160, 180], "feedback": { "below_min": "Try straightening right leg more (or bend slightly if needed)", "above_max": "Avoid locking knee" } },
@@ -221,10 +221,10 @@
           "torso_angle_left":{ "angle_range": [25, 60], "feedback": { "below_min": "Lengthen spine, fold more", "above_max": "Slightly lift chest" } }
         }
       },
-      "hasta_uttanasana_return_up": {
+      "hasta_uttanasana_2": {
         "display_name": "Hasta Uttanasana (Return Up)",
         "description": "Inhale, raise arms overhead, arch back slightly (Raised Arms Pose).",
-        "image_path": "images/hasta_uttanasana.png",
+        "image_path": "images/pose_11.png",
         "criteria": {
           "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Keep left leg straight", "above_max": "Avoid hyperextension" } },
           "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Keep right leg straight", "above_max": "Avoid hyperextension" } },
@@ -237,10 +237,10 @@
           "torso_angle_left":{ "angle_range": [170, 180], "feedback": { "below_min": "Lift chest, arch gently", "above_max": "Ease the backbend" } }
         }
       },
-      "pranamasana_end": {
+      "pranamasana_2": {
         "display_name": "Pranamasana (Prayer Pose - End)",
         "description": "Exhale, return to standing, palms joined at chest (Prayer Pose).",
-        "image_path": "images/pranamasana.png",
+        "image_path": "images/pose_12.png",
         "criteria": {
           "left_knee":    { "angle_range": [170, 180], "feedback": { "below_min": "Straighten left leg", "above_max": "Avoid hyperextension" } },
           "right_knee":   { "angle_range": [170, 180], "feedback": { "below_min": "Straighten right leg", "above_max": "Avoid hyperextension" } },

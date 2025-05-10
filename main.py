@@ -242,6 +242,8 @@ class ExerciseCoach:
 
         self.active_feedback_messages = [] # For on-screen text
 
+        self.mp_landmarks_for_pose = None # Placeholder for landmarks
+
         self.placeholder_img = create_placeholder_image()
         self._preload_all_images()
 
@@ -269,6 +271,20 @@ class ExerciseCoach:
     #         self.start_next_pose()
     #     else:
     #         print("Already at the first pose.")
+
+    def save_landmarks(self, landmarks_mp, pose_name ,file):
+        """
+        Saves the landmarks and pose name to a CSV file.
+        Each line contains x, y, z, visibility for every landmark of each pose example.
+        Goal is to create a dataset of landmarks for training.
+        """
+        if landmarks_mp and landmarks_mp.landmark:
+            for landmark in landmarks_mp.landmark:
+                file.write(f"{landmark.x},{landmark.y},{landmark.z},{landmark.visibility},")
+            file.write(f"{pose_name}\n") # Add pose name at the end of the landmarks
+        else:
+            print("No landmarks detected to save.")
+
 
 
     def start_next_pose(self):
@@ -316,6 +332,7 @@ class ExerciseCoach:
         
         elif self.phase == "CORRECTION":
             landmarks_mp, w, h = self.pose_estimator.get_landmarks(frame)
+            self.mp_landmarks_for_pose = landmarks_mp # Store for saving for data collection
             self.active_feedback_messages.clear() # Clear previous frame's feedback
 
             if landmarks_mp:
@@ -526,9 +543,11 @@ def main():
         elif key == ord('n'): # For debugging: skip to next pose
             print("Skipping to next pose...")
             coach.start_next_pose()
-        # elif key == ord('p'): # For debugging: previous pose
-        #     print("Going back to previous pose...")
-        #     coach.previous_pose()
+        elif key == ord('s'):
+            # Save landmarks to CSV for data collection
+            with open("pose_landmarks_data_labeled.csv", 'a') as file_for_data_collection:
+                coach.save_landmarks(coach.mp_landmarks_for_pose, coach.current_pose_name, file_for_data_collection)
+                print(f"Landmarks saved for {coach.current_pose_name}.")
 
 
     # Cleanup
