@@ -7,6 +7,12 @@ import threading
 import queue
 import pyttsx3
 import os # For checking image file existence
+import torch
+from PoseCheck import PoseCheck
+import torch.nn as nn
+import pandas as pd
+
+from preprocessing import preprocess_data
 
 # --- Configuration Constants ---
 CONFIG_FILE = 'exercise_config.json'
@@ -272,6 +278,45 @@ class ExerciseCoach:
     #     else:
     #         print("Already at the first pose.")
 
+    def predict_from_model(self, model, landmarks_mp    ):
+        """
+        Predicts the pose label from the model using the landmarks.
+        Returns the predicted class index.
+        """
+        if landmarks_mp and landmarks_mp.landmark:
+            landmarks = np.array([[landmark.x, landmark.y, landmark.z, landmark.visibility] for landmark in landmarks_mp.landmark])
+            landmarks = landmarks.reshape(1, -1)
+
+            landmark_np=np.array(preprocess_data(pd.DataFrame(landmarks)))
+            model.eval()
+            index_to_class={0: 'pranamasana',
+                            1: 'hasta_uttanasana',
+                            2: 'padahastasana_fold',
+                            3: 'ashwa_sanchalanasana_R_leg_back',
+                            4: 'dandasana_plank',
+                            5: 'ashtanga_namaskara_eight_limbs',
+                            6: 'bhujangasana_cobra',
+                            7: 'adho_mukha_svanasana_down_dog',
+                            8: 'ashwa_sanchalanasana_L_leg_back',
+                            9: 'Could_not_find_pose'
+                            }
+                            
+            with torch.no_grad():
+                new_sample = torch.tensor(landmark_np, dtype=torch.float32).view(1, 4, 33)
+                output = model(new_sample)
+                predicted_class = torch.argmax(output, dim=1).item()
+
+            # return self.all_poses_data[predicted_class]
+            return index_to_class[predicted_class]
+        else:
+            print("No landmarks detected for prediction.")
+            return None
+
+
+
+
+
+
     def save_landmarks(self, landmarks_mp, pose_name ,file):
         """
         Saves the landmarks and pose name to a CSV file.
@@ -284,6 +329,8 @@ class ExerciseCoach:
             file.write(f"{pose_name}\n") # Add pose name at the end of the landmarks
         else:
             print("No landmarks detected to save.")
+
+        
 
 
 
@@ -474,6 +521,10 @@ class ExerciseCoach:
 # --- Main Application ---
 def main():
     print("Starting Exercise Coach...")
+    model=PoseCheck(num_classes=10) # Initialize model with 4 classes
+    model.load_state_dict(torch.load('final_model_weights.pth'))
+    model.eval()
+
 
     # Load Configuration
     try:
@@ -493,7 +544,7 @@ def main():
     coach = ExerciseCoach(config_data, tts_helper)
 
     # OpenCV Video Capture
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     if not cap.isOpened():
         print("Error: Could not open video camera.")
         tts_helper.stop()
@@ -502,7 +553,8 @@ def main():
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, FRAME_WIDTH)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT)
 
-    coach.start_next_pose() # Start the first pose sequence
+    
+    # coach.start_next_pose() # Start the first pose sequence
 
     frame_count = 0
     start_time = time.time()
@@ -529,6 +581,10 @@ def main():
             display_fps = frame_count / elapsed_time
             frame_count = 0
             start_time = time.time()
+
+        predictedd=coach.predict_from_model(model, coach.mp_landmarks_for_pose) # Predict the pose from the model
+        print(f"Predicted pose: {predictedd}")
+
         
         cv2.putText(output_frame, f"FPS: {display_fps:.1f}", (output_frame.shape[1] - 120, 30), 
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, COLOR_TEXT, 2)

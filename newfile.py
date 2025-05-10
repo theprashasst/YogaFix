@@ -9,7 +9,7 @@ def prepare_header_for_csv():
     header = []
     for i in range(NUM_LANDMARKS):
         header.extend([f"lm_{i}_x", f"lm_{i}_y", f"lm_{i}_z", f"lm_{i}_vis"])
-    header.append("pose_label")
+    header.append("pose_label \n")
     return header
 
 file_exists = os.path.isfile(DATA_COLLECTION_FILE)
