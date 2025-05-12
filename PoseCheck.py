@@ -52,5 +52,6 @@ class PoseCheck(nn.Module):
 
         # Output layer
         x = self.fc2(x)  # [batch_size, num_classes]
+  
 
         return x

@@ -278,7 +278,7 @@ class ExerciseCoach:
     #     else:
     #         print("Already at the first pose.")
 
-    def predict_from_model(self, model, landmarks_mp    ):
+    def predict_from_model(self, model, landmarks_mp,frame    ):
         """
         Predicts the pose label from the model using the landmarks.
         Returns the predicted class index.
@@ -303,14 +303,40 @@ class ExerciseCoach:
                             
             with torch.no_grad():
                 new_sample = torch.tensor(landmark_np, dtype=torch.float32).view(1, 4, 33)
-                output = model(new_sample)
+                logits = model(new_sample)
+                output = torch.softmax(logits, dim=1)
+                for index,class_name in index_to_class.items():
+                    print(f" {class_name} : {output[0][index].item()}")
                 predicted_class = torch.argmax(output, dim=1).item()
 
+            overlay = frame.copy() 
+            text = f"Predicted: {index_to_class[predicted_class]}"
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            scale = 1
+            thickness = 2
+
+            # Get text size
+            (text_width, text_height), _ = cv2.getTextSize(text, font, scale, thickness)
+
+            # Get image dimensions
+            img_height, img_width = overlay.shape[:2]
+
+            # Compute top-right corner position
+            x = img_width - text_width - 20  # 20 pixels padding from right
+            y = img_height-50  # 50 pixels from bottom
+
+            # Draw the text
+            cv2.putText(overlay, text, (x, y), font, scale, COLOR_TEXT, thickness, cv2.LINE_AA)
+
+            # cv2.putText(overlay, f"Predicted: {index_to_class[predicted_class]}", (w-100, 40), cv2.FONT_HERSHEY_SIMPLEX, 1.2, COLOR_TEXT, 2, cv2.LINE_AA)
+
+            return overlay
             # return self.all_poses_data[predicted_class]
-            return index_to_class[predicted_class]
-        else:
-            print("No landmarks detected for prediction.")
-            return None
+        #     return index_to_class[predicted_class]
+        # else:
+        #     print("No landmarks detected for prediction.")
+        #     return None
+        return frame # No landmarks, return original frame
 
 
 
@@ -412,7 +438,7 @@ class ExerciseCoach:
                 self.active_feedback_messages.append("Cannot see you clearly.")
                 # self.tts.speak("Cannot see you.") # Can be spammy
 
-    def draw_overlay(self, frame):
+    def draw_overlay(self, frame,DEBUG_MODE=False):
         h, w = frame.shape[:2]
         overlay = frame.copy() # Work on a copy to avoid modifying original frame if not needed elsewhere
 
@@ -452,10 +478,12 @@ class ExerciseCoach:
             display_name = self.current_pose_data.get('display_name', self.current_pose_name)
             cv2.putText(overlay, f"Current: {display_name}", (50, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, COLOR_TEXT, 2, cv2.LINE_AA)
 
-            for angle_name in self.current_angle_details.keys():
-                cv2.putText(overlay, f"{angle_name}: {self.current_angle_details[angle_name]['angle']:.1f}°",
-                            (50, 100 + list(self.current_angle_details.keys()).index(angle_name) * 30),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, self.current_angle_details[angle_name]["color"], 2)
+            if DEBUG_MODE:
+
+                for angle_name in self.current_angle_details.keys():
+                    cv2.putText(overlay, f"{angle_name}: {self.current_angle_details[angle_name]['angle']:.1f}°",
+                                (50, 100 + list(self.current_angle_details.keys()).index(angle_name) * 30),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.7, self.current_angle_details[angle_name]["color"], 2)
 
 
 
@@ -469,6 +497,7 @@ class ExerciseCoach:
 
 
             # Draw lines for checked angles
+            
             for detail in self.current_angle_details.values():
                 cv2.line(overlay, detail["p1"], detail["p2"], detail["color"], 3)
                 cv2.line(overlay, detail["p2"], detail["p3"], detail["color"], 3)
@@ -523,6 +552,7 @@ def main():
     print("Starting Exercise Coach...")
     model=PoseCheck(num_classes=10) # Initialize model with 4 classes
     model.load_state_dict(torch.load('final_model_weights.pth'))
+    # model.load_state_dict(torch.load('final_model_weights_softmax.pth'))
     model.eval()
 
 
@@ -569,10 +599,10 @@ def main():
         frame = cv2.flip(frame, 1) # Mirror effect
 
         # Process and update coach state
+        frame=coach.predict_from_model(model, coach.mp_landmarks_for_pose,frame) # Predict the pose from the model
         coach.update(frame)
-
         # Draw overlays onto the frame
-        output_frame = coach.draw_overlay(frame)
+        output_frame = coach.draw_overlay(frame,DEBUG_MODE=False)
         
         # FPS Calculation
         frame_count += 1
@@ -582,8 +612,7 @@ def main():
             frame_count = 0
             start_time = time.time()
 
-        predictedd=coach.predict_from_model(model, coach.mp_landmarks_for_pose) # Predict the pose from the model
-        print(f"Predicted pose: {predictedd}")
+        # print(f"Predicted pose: {output_frame}")
 
         
         cv2.putText(output_frame, f"FPS: {display_fps:.1f}", (output_frame.shape[1] - 120, 30), 
