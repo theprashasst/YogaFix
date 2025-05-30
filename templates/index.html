@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YogaFix - AI Yoga Coach</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="video-container">
+            <video id="webcam" autoplay playsinline width="640" height="480"></video>
+            <canvas id="overlayCanvas" width="640" height="480"></canvas>
+        </div>
+        <div id="infoContainer">
+            <div id="poseInfo">
+                <h2 id="poseName">Pose Name</h2>
+                <img id="poseImage" src="" alt="Reference Pose" width="300">
+                <p id="poseDescription">Pose description will appear here.</p>
+            </div>
+            <div id="feedbackMessages">
+                <p>Feedback will appear here.</p>
+            </div>
+            <button id="startStopButton">Start Webcam</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script></body>
+</html>
