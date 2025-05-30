@@ -1,7 +1,6 @@
+Flask>=2.0
 torch
 mediapipe
-opencv-python
-pandas
+opencv-python-headless
 numpy
-pyttsx3
-matplotlib
+Pillow
